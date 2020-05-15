@@ -21,6 +21,6 @@ Item {
 //        Line { width: 570; height: 270; x1: 200; y1: 270; x2: 300; y2: 240; }
 //        Line { width: 570; height: 270; x1: 300; y1: 240; x2: 400; y2: 120; }
 //        Line { width: 570; height: 270; x1: 400; y1: 120; x2: 500; y2: 80;  }
-//        Line { width: 570; height: 270; x1: 500; y1: 80;  x2: 570; y2: 270; }
+        Line { width: 570; height: 270; x1: 500; y1: 80;  x2: 570; y2: 270; }
     }
 }
