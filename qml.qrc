@@ -4,5 +4,6 @@
         <file>AreaChart.qml</file>
         <file>Line.qml</file>
         <file>DraggablePanel.qml</file>
+        <file>TitleBarButton.qml</file>
     </qresource>
 </RCC>
