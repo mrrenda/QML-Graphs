@@ -11,10 +11,12 @@ Item
 
     id: mainContainer
 //    anchors.centerIn: parent
-    anchors.top: parent
+//    anchors.top: parent
     x: x1
+    y: 0
 //    y: 10
-//    width: x2 - x1
+    width: x2 - x1
+    clip: true
 
     Canvas
     {
@@ -25,7 +27,7 @@ Item
         onPaint:
         {
             var ctx = getContext("2d")
-            var Ax = (x1 + x2) / 2;
+            var Ax = (0 + mainContainer.width) / 2;
             var Ay = (y1 + y2) / 2;
             var M = 1;
             if ((y1 - y2) < 0) M = M * -1;
@@ -43,7 +45,7 @@ Item
             ctx.strokeStyle = lineFill
             ctx.beginPath()
             ctx.moveTo(0, y1)
-            ctx.lineTo(x2, y2)
+            ctx.lineTo(mainContainer.width, y2)
             ctx.stroke()
         }
     }
