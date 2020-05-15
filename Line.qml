@@ -12,16 +12,18 @@ Item
     id: mainContainer
     anchors.centerIn: parent
 
+
     Canvas
     {
         id: drawingCanvas
         anchors.fill: parent
+
         onPaint:
         {
             var ctx = getContext("2d")
 
+            ctx.fillStyle = "#00000000" //translucent background
             ctx.fillRect(0, 0, drawingCanvas.width, drawingCanvas.height)
-
             ctx.lineWidth = lineThickness;
             ctx.strokeStyle = lineFill
             ctx.beginPath()
