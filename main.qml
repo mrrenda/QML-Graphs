@@ -8,7 +8,7 @@ Window {
     width: 600
     height: 330
     color: "#000000"
-    flags: Qt.FramelessWindowHint
+    flags: Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.Window
 
     screen: Qt.application.screens[0]
     x: screen.width - this.width
@@ -43,8 +43,8 @@ Window {
         buttonColor: "blue"
 
         func.onPressed: {
-            areaChart._color = "#55FFFFFF"
-            areaChart.interval = 10
+            areaChart._color = "blue"
+            areaChart.interval = 100
             areaChart.addData(Math.floor(Math.random() * areaChart._height))
         }
     }
@@ -52,7 +52,7 @@ Window {
     Core {
         id: core
         onSendData:  {
-            areaChart._color = "#FFFFFF"
+            areaChart._color = "red"
             areaChart.interval = 50
             console.debug("Data added")
             areaChart.addData(core.workload)

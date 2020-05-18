@@ -6,44 +6,52 @@ Item
     property int x2: 0
     property int y1: 0
     property int y2: 0
-    property color lineFill: "#55FFFFFF"
-    property int lineThickness: 2
+    property color colorData: "red"
+    property color colorBack: "black"
+
+
 
     id: mainContainer
     x: x1
-    y: 0
     width: x2 - x1
     height: parent.height
 
-    Canvas
-    {
+    //Background (the shade you see is the background)
+    Canvas {
+        anchors.fill: parent
+        antialiasing: true
+
+        onPaint: {
+            var ctx = getContext("2d");
+
+            // Create gradient
+            var grd = ctx.createLinearGradient(0, 0, 0, mainContainer.height);
+            grd.addColorStop(0, colorData);
+            grd.addColorStop(1, colorBack);
+
+            // Fill with gradient
+            ctx.fillStyle = grd;
+            ctx.fillRect(0, 0, mainContainer.width, mainContainer.height);
+        }
+    }
+
+    //Data (visualized by darkening the area above the data line)
+    Canvas {
         id: drawingCanvas
         anchors.fill: parent
         antialiasing: true
 
-        onPaint:
-        {
-            var ctx = getContext("2d")
-            var Ax = (0 + mainContainer.width) / 2;
-            var Ay = (y1 + y2) / 2;
-            var M = 1;
-            if ((y1 - y2) < 0) M = M * -1;
-            var shadeDepth = 1000//mainContainer.height + (mainContainer.height - y2)//mainContainer.height - Math.abs(y2 - y1)
-            var Bx = Ax + M * (shadeDepth * Math.sqrt(Math.pow(y2 - y1, 2) / (Math.pow(y2 - y1, 2) + Math.pow(x1 - x2, 2))));
-            var By = Ay + (shadeDepth * Math.sqrt(Math.pow(x1 - x2, 2) / (Math.pow(y2 - y1, 2) + Math.pow(x1 - x2, 2))));
-            var grd = context.createLinearGradient(Ax, Ay, Bx, By);
-            grd.addColorStop(0.00, '#00000000');
-            grd.addColorStop(0.01, lineFill);
-            grd.addColorStop(1.00, '#00000000');
-            context.fillStyle = grd;
+        onPaint: {
+            var ctx = getContext("2d");
 
-            ctx.fillRect(0, 0, drawingCanvas.width, drawingCanvas.height)
-            ctx.lineWidth = lineThickness;
-            ctx.strokeStyle = lineFill
-            ctx.beginPath()
-            ctx.moveTo(0, y1)
-            ctx.lineTo(mainContainer.width, y2)
-            ctx.stroke()
+            ctx.fillStyle = colorBack;
+            ctx.beginPath();
+            ctx.moveTo(0, y1);
+            ctx.lineTo(mainContainer.width, y2);
+            ctx.lineTo(mainContainer.width, 0);
+            ctx.lineTo(0, 0);
+            ctx.closePath();
+            ctx.fill();
         }
     }
 }

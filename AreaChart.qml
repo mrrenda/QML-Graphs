@@ -16,7 +16,7 @@ Item {
 
         var dataY = areaChartRoot._height - data
 
-        var lineCommand = "Line { lineFill: \""
+        var lineCommand = "Line { colorData: \""
                 + _color
                 + "\"; x1: "
                 + dataCount * interval
@@ -57,29 +57,6 @@ Item {
         x: 0
         y: 0
         anchors.top: areaChartRoot.top
-
-//        Behavior on width { SmoothedAnimation { velocity: 50 } }
-
-        Line { lineFill: "#5500FF00"; x1: 0;   y1: 60;   x2: 100; y2: 120; }
-        Line { lineFill: "#5500FF00"; x1: 100; y1: 120;  x2: 200; y2: 160; }
-        Line { lineFill: "#5500FF00"; x1: 200; y1: 160;  x2: 300; y2: 200; }
-        Line { lineFill: "#5500FF00"; x1: 300; y1: 200;  x2: 400; y2: 90;  }
-        Line { lineFill: "#5500FF00"; x1: 400; y1: 90;   x2: 500; y2: 50;  }
-        Line { lineFill: "#5500FF00"; x1: 500; y1: 50;   x2: 600; y2: 30;  }
-
-        Line { lineFill: "#55FF0000"; x1: 0;   y1: 170; x2: 100; y2: 120; }
-        Line { lineFill: "#55FF0000"; x1: 100; y1: 120; x2: 200; y2: 110; }
-        Line { lineFill: "#55FF0000"; x1: 200; y1: 110; x2: 300; y2: 120; }
-        Line { lineFill: "#55FF0000"; x1: 300; y1: 120; x2: 400; y2: 120; }
-        Line { lineFill: "#55FF0000"; x1: 400; y1: 120; x2: 500; y2: 80;  }
-        Line { lineFill: "#55FF0000"; x1: 500; y1: 80;  x2: 600; y2: 80;  }
-
-        Line { lineFill: "#550000FF"; x1: 0;   y1: 200; x2: 100; y2: 150; }
-        Line { lineFill: "#550000FF"; x1: 100; y1: 150; x2: 200; y2: 270; }
-        Line { lineFill: "#550000FF"; x1: 200; y1: 270; x2: 300; y2: 240; }
-        Line { lineFill: "#550000FF"; x1: 300; y1: 240; x2: 400; y2: 120; }
-        Line { lineFill: "#550000FF"; x1: 400; y1: 120; x2: 500; y2: 80;  }
-        Line { lineFill: "#550000FF"; x1: 500; y1: 80;  x2: 600; y2: 80;  }
     }
 
     MouseArea {
