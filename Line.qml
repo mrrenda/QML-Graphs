@@ -7,7 +7,7 @@ Item
     property int y1: 0
     property int y2: 0
     property color lineFill: "#55FFFFFF"
-    property int lineThickness: 3
+    property int lineThickness: 2
 
     id: mainContainer
     x: x1
@@ -28,7 +28,7 @@ Item
             var Ay = (y1 + y2) / 2;
             var M = 1;
             if ((y1 - y2) < 0) M = M * -1;
-            var shadeDepth = mainContainer.height - Math.abs(y2 - y1)
+            var shadeDepth = 1000//mainContainer.height + (mainContainer.height - y2)//mainContainer.height - Math.abs(y2 - y1)
             var Bx = Ax + M * (shadeDepth * Math.sqrt(Math.pow(y2 - y1, 2) / (Math.pow(y2 - y1, 2) + Math.pow(x1 - x2, 2))));
             var By = Ay + (shadeDepth * Math.sqrt(Math.pow(x1 - x2, 2) / (Math.pow(y2 - y1, 2) + Math.pow(x1 - x2, 2))));
             var grd = context.createLinearGradient(Ax, Ay, Bx, By);

@@ -1,5 +1,6 @@
 import QtQuick 2.14
 import QtQuick.Window 2.14
+import com.renda.core 1.0
 
 Window {
     id: window
@@ -43,8 +44,27 @@ Window {
 
         func.onPressed: {
             areaChart._color = "#55FFFFFF"
-            areaChart.interval = 50
+            areaChart.interval = 10
             areaChart.addData(Math.floor(Math.random() * areaChart._height))
         }
+    }
+
+    Core {
+        id: core
+        onSendData:  {
+            areaChart._color = "#FFFFFF"
+            areaChart.interval = 50
+            console.debug("Data added")
+            areaChart.addData(core.workload)
+        }
+    }
+
+    TitleBarButton {
+        id: dataAdderStarter
+        x: parent.width - (this.width + 50)
+        y: 10
+        buttonColor: "green"
+
+        func.onPressed: { core.startAddingData(); }
     }
 }

@@ -10,6 +10,7 @@ Item {
     property variant _color: "#55FFFFFF"
     property variant dataCount: 0
     property variant lastData: 0
+    property variant isUserDragging: false
 
     function addData(data) {
 
@@ -30,7 +31,9 @@ Item {
         lastData = dataY
         dataCount ++
         Qt.createQmlObject(lineCommand, areaChartBorder, "dynamicItem");
-        repositionChart()
+
+        if(!isUserDragging)
+            repositionChart()
     }
 
     function repositionChart() {
@@ -54,6 +57,8 @@ Item {
         x: 0
         y: 0
         anchors.top: areaChartRoot.top
+
+//        Behavior on width { SmoothedAnimation { velocity: 50 } }
 
         Line { lineFill: "#5500FF00"; x1: 0;   y1: 60;   x2: 100; y2: 120; }
         Line { lineFill: "#5500FF00"; x1: 100; y1: 120;  x2: 200; y2: 160; }
@@ -81,6 +86,13 @@ Item {
         anchors.fill: areaChartBorder
         drag.target: areaChartBorder
 
-        onReleased: { repositionChart() }
+        onPressed: {
+            isUserDragging = true;
+        }
+
+        onReleased: {
+            repositionChart()
+            isUserDragging = false;
+        }
     }
 }
