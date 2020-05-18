@@ -7,7 +7,7 @@ Item
     property int y1: 0
     property int y2: 0
     property color lineFill: "#55FFFFFF"
-    property int lineThickness: 2
+    property int lineThickness: 3
 
     id: mainContainer
     x: x1
