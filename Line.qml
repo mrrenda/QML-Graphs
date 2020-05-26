@@ -6,8 +6,8 @@ Item
     property int x2: 0
     property int y1: 0
     property int y2: 0
-    property color colorData: "red"
-    property color colorBack: "black"
+    property color colorData: "#1E8BFF"
+    property color colorBack: "#000000"
 
 
 
@@ -52,6 +52,23 @@ Item
             ctx.lineTo(0, 0);
             ctx.closePath();
             ctx.fill();
+        }
+    }
+
+    //Line
+    Canvas {
+        anchors.fill: parent
+        antialiasing: true
+
+        onPaint: {
+            var ctx = getContext("2d");
+
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = colorData;
+            ctx.beginPath();
+            ctx.moveTo(0, y1);
+            ctx.lineTo(mainContainer.width, y2);
+            ctx.stroke();
         }
     }
 }

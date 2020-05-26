@@ -7,7 +7,7 @@ Item {
     id: areaChartRoot
 
     property variant interval: 0
-    property variant _color: "#55FFFFFF"
+    property variant _color: "#AA1E8BFF"
     property variant dataCount: 0
     property variant lastData: 0
     property variant isUserDragging: false

@@ -43,7 +43,6 @@ Window {
         buttonColor: "blue"
 
         func.onPressed: {
-            areaChart._color = "blue"
             areaChart.interval = 100
             areaChart.addData(Math.floor(Math.random() * areaChart._height))
         }
@@ -52,7 +51,6 @@ Window {
     Core {
         id: core
         onSendData:  {
-            areaChart._color = "red"
             areaChart.interval = 50
             console.debug("Data added")
             areaChart.addData(core.workload)
@@ -65,6 +63,9 @@ Window {
         y: 10
         buttonColor: "green"
 
-        func.onPressed: { core.startAddingData(); }
+        func.onPressed: {
+            areaChart._color = "red";
+            core.startAddingData();
+        }
     }
 }
