@@ -24,10 +24,11 @@ void core::startAddingData()
 
 void core::m_randomGenerator()
 {
-//    qsrand(QDateTime::currentDateTime().time().second());
+    QRandomGenerator qRandomGenerator;
+    int randomNumber;
 
     while (true) {
-        int randomNumber = qrand() % 300;
+        randomNumber = qRandomGenerator.generate() % 300;
         qDebug() << "random number generated" << randomNumber;
         setValue(randomNumber);
         QThread::msleep(200);

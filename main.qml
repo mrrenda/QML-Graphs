@@ -10,9 +10,9 @@ Window {
     color: "#000000"
     flags: Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint | Qt.Window
 
-    screen: Qt.application.screens[0]
-    x: screen.width - this.width
-    y: screen.height - this.height - 30
+//    screen: Qt.application.screens[0]
+//    x: screen.width - this.width
+//    y: screen.height - this.height - 30
 
     AreaChart { id: areaChart; x: 0; y: 30; _width: 600; _height: 300; }
 
